@@ -1,12 +1,19 @@
-// подключение express
 const express = require("express");
-// создаем объект приложения
-const server = express();
-// определяем обработчик для маршрута "/"
-server.get("/", function(request, response){
+const fs = require("fs");
 
-    // отправляем ответ
-    response.send("<h2>Привет Express!</h2>");
+const app = express();
+
+//Запись логов
+app.use(function(request, response, next){
+
+    var now = new Date();
+    var ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
+    var data = `[${now.getHours()}:${now.getMinutes()}] url:${request.url} IP:${ip}`;
+    fs.appendFile("logs.log", `${data} \n`, function(){});
+    next();
 });
-// начинаем прослушивать подключения на 3000 порту
-server.listen(3000);
+
+app.get("/", function(request, response){
+    response.send("Hello");
+});
+app.listen(3000);
