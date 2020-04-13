@@ -14,7 +14,33 @@
   background-color: lightgray;
 }
 
-#backgroundСanvas {
+#registration_Form{
+  width: 20%;
+  margin: auto;
+  background-color: gray;
+  border: 1px solid black; /* Параметры границы */
+  padding: 2%; /* Поля вокруг текста */
+}
+.registration_form_input{
+  margin: auto;
+  width: 100% ;
+  font-size: 100%;
+}
+.registration_form_text{
+    font-size: 150%;
+    margin: auto;
+}
+.registration_form_head{
+    font-size: 200%;
+    margin: auto;
+}
+.registration_form_button{
+  padding: 1%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+#main {
   margin: auto;
   background-color: white;
   border: 1px solid black; /* Параметры границы */
