@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/DmitryBogov/webprj/issues"
   },
-  "homepage": "https://github.com/DmitryBogov/webprj#readme"
+  "homepage": "https://github.com/DmitryBogov/webprj#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
