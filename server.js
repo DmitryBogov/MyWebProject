@@ -16,4 +16,11 @@ app.use(function(request, response, next){
 app.get("/", function(request, response){
     response.send("Hello");
 });
+
+// ! ! ! ОБЯЗАТЕЛЬНО ПОСЛЕДНИЙ ! ! !
+app.use(function(err, request, response, next){
+    // логирование ошибки, пока просто console.log
+    console.log(err)
+    response.status(500).send('Something broke!')
+})
 app.listen(3000);
