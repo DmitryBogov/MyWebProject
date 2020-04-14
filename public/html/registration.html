@@ -19,18 +19,21 @@
     <div id="main">
 
 
-  <div id="registration_Form">
-  <p class="registration_form_head" align="center" ><b>  РЕГИСТРАЦИЯ </br></p>
+
+
+  <form class="registration_Form" action="/registration" method="post" >
+
+    <p class="registration_form_head" align="center" ><b>  РЕГИСТРАЦИЯ </br></p>
     <p></p>
-   <p class="registration_form_text"  ><b>  Логин</br></p>
-    <input class="registration_form_input" type="text"  name="" value=""
-   <p class="registration_form_text" ><b>Пароль</br></p>
-    <input class="registration_form_input" type="password"  name="" value="">
+    <p class="registration_form_text"  ><b>  Логин</br></p>
+    <input class="registration_form_input" type="text"  name="userName" value="">
+    <p class="registration_form_text" ><b>Пароль</br></p>
+    <input class="registration_form_input" type="password"  name="userPassword" value="">
     <p></p>
 
-    <button class='registration_form_button' type="button"  name="sendRegistrationForm">Зарегистрироваться</button>
+    <input class='registration_form_button' type="submit" value='Зарегистрироваться'>
 
-  </div>
+  </form>
 
 
 
