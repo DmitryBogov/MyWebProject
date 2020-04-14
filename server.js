@@ -1,14 +1,18 @@
 const express = require("express");
-const fs = require("fs");
-const bodyParser = require("body-parser");
-const dataBase = require("./private/dbmodule");
-
 const app = express();
+const fs = require("fs");
+
+
+const dataBaseResponse  = require('./private/dbmodule');
 
 // создаем парсер для данных application/x-www-form-urlencoded
+const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({extended: false});
 
-//Запись логов
+
+
+
+//Запись логов подключения пользователя к сайту
 app.use(function(request, response, next){
     var now = new Date();
     var ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
@@ -19,25 +23,42 @@ app.use(function(request, response, next){
 
 app.use(express.static('public')) // Дает досутп к папке public
 
+//Подключение модуля с запросами бд
+dataBaseResponse(app, urlencodedParser);
 
 
-
-
+// TODO:  обработка дальнейших get запросов на страницы
 app.get("/", function(request, response){
     response.sendFile(__dirname + '/public/html/index.html');
 });
-
 //страница регистрации
 app.get("/registration", function(request, response){
     response.sendFile(__dirname + '/public/html/registration.html');
 });
-//Принимает пост запрос, и отправляет ответ
-app.post("/registration", urlencodedParser, function (request, response) {
-
-    if(!request.body) return response.sendStatus(400);
-    //в request.body хранится данные формы
-   //response.send(`${request.body.userName} - ${request.body.userAge}`);
+app.get("/login", function(request, response){
+    response.sendFile(__dirname + '/public/html/login.html');
 });
+/*
+app.post("/registration", urlencodedParser, function (request, response) {
+    if(!request.body) return response.sendStatus(400);
+
+});
+
+
+
+app.post("/login", urlencodedParser, function (request, response) {
+    if(!request.body) return response.sendStatus(400);
+
+
+});
+
+ ... */
+
+
+
+//Принимает пост запрос, и отправляет ответ
+
+
 
 
 
