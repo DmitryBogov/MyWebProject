@@ -13,9 +13,17 @@ app.use(function(request, response, next){
     next();
 });
 
+app.use(express.static('public'))
+
+
 app.get("/", function(request, response){
-    response.send("Hello");
+    response.sendFile(__dirname + '/public/html/index.html');
 });
+app.get("/r", function(request, response){
+    response.sendFile(__dirname + '/public/html/registration.html');
+});
+
+
 
 // ! ! ! ОБЯЗАТЕЛЬНО ПОСЛЕДНИЙ ! ! !
 app.use(function(err, request, response, next){
